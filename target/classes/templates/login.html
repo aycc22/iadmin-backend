@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login-登录</title>
+  <link rel="stylesheet" href="/iview/dist/styles/iview.css">
+  <script src="/vuejs/dist/vue.min.js"></script>
+  <script src="/iview/dist/iview.min.js"></script>
+
+  <style type="text/css">
+    .login {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://file.iviewui.com/iview-admin/login_bg.jpg');
+      background-size: cover;
+      position: absolute;
+    }
+    .login-con {
+      position: absolute;
+      right: 160px;
+      top: 50%;
+      transform: translateY(-60%);
+      width: 300px;
+    }
+    .form-con {
+      padding: 10px 0 0;
+    }
+    .login-tip {
+      font-size: 10px;
+      text-align: center;
+      color: #c3c3c3;
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="login"  @keydown.enter="handleSubmit">
+  <div class="login-con">
+    <Card :bordered="true">
+      <p slot="title">
+        <Icon type="log-in"></Icon>
+        欢迎登录
+      </p>
+
+      <div class="form-con">
+        <i-form ref="loginForm" :model="form" :rules="rules">
+          <form-item prop="userName">
+            <i-input v-model="form.userName" placeholder="请输入用户名">
+              <span slot="prepend">
+                    <Icon :size="16" type="person"></Icon>
+              </span>
+            </i-input>
+          </form-item>
+          <form-item prop="password">
+            <i-input type="password" v-model="form.password" placeholder="请输入密码">
+            <span slot="prepend">
+                  <Icon :size="14" type="locked"></Icon>
+            </span>
+            </i-input>
+          </form-item>
+          <form-item>
+            <i-button @click="handleSubmit" type="primary" long>登录</i-button>
+          </form-item>
+        </i-form>
+      </div>
+    </Card>
+  </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            form: {
+                userName: '',
+                password: ''
+            },
+            rules: {
+                userName: [
+                    {required: true, message: '账号不能为空', trigger: 'blur'}
+                ],
+                password: [
+                    {required: true, message: '密码不能为空', trigger: 'blur'}
+                ]
+            }
+        },
+
+        methods: {
+            handleSubmit() {
+                this.$refs.loginForm.validate((valid) => {
+                    if (valid) {
+                        axios.get('/home')
+                            .then(function (response) {
+                                console.log(response);
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    }
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

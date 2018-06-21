@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script th:src="@{vuejs/dist/vue.js }"></script>
+  <script th:src="@{index.js }"></script>
+</head>
+<body>
+<!--/*@thymesVar id="name" type=""*/-->
+<span th:text="${name }"></span>
+<ol >
+  <!--/*@thymesVar id="userList" type="com.iadmin.mybatis.domain.Dede"*/-->
+  <li th:each="user: ${userList }" style="color: #2b85e4"><span th:text="${user.typename }"></span></li>
+</ol>
+<button onclick="showTH()">onclik</button>
+</body>
+<script th:inline="javascript" type="text/javascript" >
+  /*<![CDATA[*/
+  function showTH() {
+      console.log([[${userList }]])
+  }
+  /*]]>*/
+</script>
+
+</html>
