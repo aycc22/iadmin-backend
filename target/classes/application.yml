@@ -10,10 +10,15 @@ spring:
   resources:
     static-locations: classpath:static
 
+  # 格式化返回结果数据
+  jackson:
+    date-format: yyyy-MM-dd HH:mm
+    time-zone: GMT+8
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 server:
-  port: 8081
+  port: 8083
 
 #logging:
   #config: classpath:logback-spring.xml

@@ -48,8 +48,12 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table domainObjectName="SysUser" tableName="sys_user" enableCountByExample="false"
-			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<!--<table domainObjectName="SysUser" tableName="sys_user" enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+		<!--<table domainObjectName="SysRole" tableName="sys_role" enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+		<!--<table domainObjectName="SysPermission" tableName="sys_permission" enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 
 	</context>
 </generatorConfiguration>
